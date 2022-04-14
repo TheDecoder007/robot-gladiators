@@ -5,12 +5,7 @@ var randomNumber = function(min, max) {
   var value = Math.floor(Math.random() * (max - min + 1) + min);
   
   return value;
-}
-
-// console.log(enemy.name);
-// console.log(enemy.name.length);
-// console.log(enemy.name[0]);
-// console.log(enemy.name[3]);
+};
 
 
 var fight = function(enemy) {
@@ -117,6 +112,8 @@ endGame();
 };
 //function to end the entire game
 var endGame = function() {
+  window.alert("The game has now ended. Let's see how you did!");
+
   if (playerInfo.health > 0) {
         window.alert("Great job, you survived the game. Your score is " + playerInfo.money + ".")
       }
@@ -149,17 +146,17 @@ var endGame = function() {
           break;
           
           case "upgrade":
-            case "UPGRADE":
-             playerInfo.upgradeAttack();
+          case "UPGRADE":
+            playerInfo.upgradeAttack();
           break;
           
           case "leave":
-            case "LEAVE":
-              window.alert("Leaving the store.");
-              break;
+          case "LEAVE":
+            window.alert("Leaving the store.");
+          break;
               
-              default:
-                window.alert("You did not pick a valid option. Try again.");
+          default:
+            window.alert("You did not pick a valid option. Try again.");
 //call shop again to force player to pick a valid option
 shop();
 break;
@@ -169,7 +166,7 @@ break;
 var playerInfo = {
   name: window.prompt("What is your robot's name?"),
   health: 100,
-  attack: 10,
+  attack: 16,
   money: 10,
   reset: function() {
     this.health = 100;
@@ -193,7 +190,7 @@ var playerInfo = {
       this.money -= 7;
     }
      else {
-       window.alert("You too broke for that, fool!");
+       window.alert("You too broke for that, LMAO!");
      }
   }
 };
@@ -212,5 +209,11 @@ var enemyInfo = [
     attack: randomNumber(10, 14)
   }
 ];
+
+console.log(enemyInfo);
+console.log(enemyInfo[0]);
+console.log(enemyInfo[0].name);
+console.log(enemyInfo[0]['attack']);
+
 //start the game when the page loads
 startGame();
