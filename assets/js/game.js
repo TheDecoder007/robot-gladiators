@@ -5,25 +5,27 @@ var randomNumber = function(min, max) {
   var value = Math.floor(Math.random() * (max - min + 1) + min);
   
   return value;
+<<<<<<< HEAD
 };
 
 
+=======
+}
+ 
+>>>>>>> develop
 var fight = function(enemy) {
+
+  var isPlayerTurn = true;
+    if (Math.random() > 0.5) {
+      isPlayerTurn = false;
+    }
   
   while (playerInfo.health > 0 && enemy.health > 0) {
-    var promptFight = window.prompt('Would you like to FIGHT or SKIP this battle? Enter "FIGHT" or "SKIP" to choose.');
-    
-    if (promptFight === "skip" || promptFight === "SKIP") {
-          var confirmSkip = window.confirm("Are you sure you'd like to quit?");
-          
-         if (confirmSkip) {
-           window.alert(playerInfo.name + ' has decided to skip this fight. Sucka!');
-           
-        playerInfo.money = Math.max(0, playerInfo.money - 10);
-        console.log("playerInfo.money", playerInfo.money);
+        if (isPlayerTurn) {
+          if (fightOrSkip()) {
         break;
       }
-    }
+    
     
     // remove enemy's health by subtracting the amount set in the playerInfo.attack variable
     
@@ -48,7 +50,7 @@ var fight = function(enemy) {
     }
     
     // remove players's health by subtracting the amount set in the enemy.attack variable
-    
+  } else {
     var damage = randomNumber(enemy.attack - 3, enemy.attack);
     
     playerInfo.health = Math.max(0, playerInfo.health - damage);
@@ -65,6 +67,8 @@ var fight = function(enemy) {
         window.alert(playerInfo.name + ' still has ' + playerInfo.health + ' health left.');
       }
   }
+      isPlayerTurn = !isPlayerTurn;
+}
 };
 
 // function to start a new game
@@ -135,16 +139,19 @@ var endGame = function() {
       
       //ask player what theyd like to do
       var shopOptionPromt = window.prompt(
-        "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store?"
+        "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Enter 1, 2, or 3."
         );
         
+// convert string to integer
+        shopOptionPromt = parseInt(shopOptionPromt);
+
         //use switch to carry out action
         switch (shopOptionPromt) {
-          case "refill":
-          case "REFILL":
+          case "1":
             playerInfo.refillHealth();
           break;
           
+<<<<<<< HEAD
           case "upgrade":
           case "UPGRADE":
             playerInfo.upgradeAttack();
@@ -152,6 +159,13 @@ var endGame = function() {
           
           case "leave":
           case "LEAVE":
+=======
+          case "2":
+             playerInfo.upgradeAttack();
+          break;
+          
+          case "3":
+>>>>>>> develop
             window.alert("Leaving the store.");
           break;
               
